@@ -68,8 +68,9 @@ lanchoneteItens.forEach((item, idx) => {
   <div onclick="adicionarItem(this)" class="${idx} item">
         <img src="${item.img}">
         <h1 id="itemNome" type class="nome">Nome: ${item.nome}</h1>
-        <p id="itemPrec" class="preco">Preço: ${item.preco}</p>
+        <h2 id="itemPrec" class="preco">Preço: ${item.preco}</h2>
         <p id="itemDesc" class="descricao">Descrição: ${item.descricao}</p>
+        
     </div>
 
     `
@@ -80,16 +81,15 @@ lanchoneteItens.forEach((item, idx) => {
   
   function adicionarItem(elemento){
     let info = lanchoneteItens[elemento.classList[0]]
-  
-
-    let numeroPedido = document.querySelector(".idx")
-    document.querySelector(".conteinerLado02").innerHTML += info.nome + "______________________" + info.preco + "<br> <br>"
-
-    let total = parseFloat.info.preco.value
-    console.log(total)
-    
+    let botaoRemover = `<button class="removedor" onclick="removerItem(event)">X</button>`
+    document.querySelector(".tituloItens").innerHTML += info.nome + " " + info.preco + botaoRemover + "<br> <br>" 
   }
-
-
+  
+  
+  function removerItem(evento){
+    // let info = lanchoneteItens[evento.classList[0]]
+    let remover = document.querySelector(".removedor")
+    console.log(remover)
+  }
 
 // console.log('Preço:', lanchoneteItens[2].preco)
