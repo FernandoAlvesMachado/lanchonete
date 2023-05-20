@@ -1,3 +1,5 @@
+let containerItems = document.querySelector(".tituloItens")
+
 const lanchoneteItens = [
   {
     img: 'https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/newscms/2019_21/2870431/190524-classic-american-cheeseburger-ew-207p.jpg',
@@ -62,34 +64,49 @@ const lanchoneteItens = [
 ];
 
 
-
-lanchoneteItens.forEach((item, idx) => {
-  let itens = `
-  <div onclick="adicionarItem(this)" class="${idx} item">
+function adicionarItemsNaTela() {
+  lanchoneteItens.forEach((item, idx) => {
+    let itens = `
+      <div onclick="adicionarItem(this)" class="${idx} item">
         <img src="${item.img}">
         <h1 id="itemNome" type class="nome">Nome: ${item.nome}</h1>
         <h2 id="itemPrec" class="preco">Preço: ${item.preco}</h2>
         <p id="itemDesc" class="descricao">Descrição: ${item.descricao}</p>
-        
-    </div>
+      </div>
+      `
+      let ladodeItens = document.querySelector(".conteinerLado01")
+      ladodeItens.innerHTML += itens
+    });
+}
+adicionarItemsNaTela()
 
-    `
-    let ladodeItens = document.querySelector(".conteinerLado01")
-    ladodeItens.innerHTML += itens
 
-  });
-  
-  function adicionarItem(elemento){
-    let info = lanchoneteItens[elemento.classList[0]]
-    let botaoRemover = `<button class="removedor" onclick="removerItem(event)">X</button>`
-    document.querySelector(".tituloItens").innerHTML += info.nome + " " + info.preco + botaoRemover + "<br> <br>" 
+let carrinho = {}
+
+function adicionarItem(elemento){
+  let itemSelecionado = elemento.classList[0]
+  let botaoRemover = `
+  <div> 
+    ${lanchoneteItens[itemSelecionado].nome}  
+    <button class="${itemSelecionado} removedor" onclick="removerItem(this)">X</button>
+  </div> `
+  containerItems.innerHTML += botaoRemover
+
+
+  if(itemSelecionado in carrinho) {
+    carrinho[itemSelecionado].quantidade = carrinho[itemSelecionado].quantidade + 1 
+  } else {
+    carrinho[itemSelecionado] = {
+      quantidade: 1
+    }
   }
   
-  
-  function removerItem(evento){
-    // let info = lanchoneteItens[evento.classList[0]]
-    let remover = document.querySelector(".removedor")
-    console.log(remover)
-  }
+  console.log(carrinho)
+}
 
-// console.log('Preço:', lanchoneteItens[2].preco)
+
+function removerItem(elemento){
+  let itemNovoSelecionado = elemento.classList[0]
+
+  console.log(carrinho)
+}

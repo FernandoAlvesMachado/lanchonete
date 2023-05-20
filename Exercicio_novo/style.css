@@ -14,22 +14,14 @@ body{
     margin-left: 250px;
     flex-direction: column;
     width: 800px;
-    max-height: 1110px;
-    overflow-y: scroll;
+    max-height: 600px;
+    overflow-y: auto;
 }
 .conteinerLado02{
     width: 50%;
     flex-direction: column;
     transition: ease-in-out .5s;
-    > h1{
-        padding-bottom: 50px;
-    }
-
-}
-
-
-.tituloItens{
-    justify-content: space-between;
+    
 }
 
 .item{
@@ -67,15 +59,12 @@ body{
 }
 
 .tituloItens{
+    display: flex;
+    flex-direction: column;
     padding-right: 90px;
     transition: ease-in-out .5s;
     max-height: 700px;
     overflow-y: scroll;
-    >h2{
-        padding: 10px;
-        margin: 50px;
-        overflow: hidden;
-    }
 }
 
 button{
